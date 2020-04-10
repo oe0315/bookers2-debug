@@ -26,6 +26,17 @@
 		<tr>
 			<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
 			<td><%= user.name%></td>
+			<td><%= link_to "フォロー数:#{user.follower.count}", users_following_path(user) %></td>
+			<td><%= link_to "フォロワー数:#{user.followed.count}", users_follower_path(user) %></td>
+			<td>
+				<% unless user == current_user %>
+                        <% if current_user.following?(user) %>
+                            <%= link_to 'フォロー解除', unfollow_path(user.id), method: :POST,class:"btn btn-info", remote: true %>
+                        <% else %>
+                            <%= link_to 'フォローする', follow_path(user.id), method: :POST,class:"btn btn-default" %>
+                        <% end %>
+                    <% end %>
+             </td>
 			<td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
 		</tr>
 		<% end %>
