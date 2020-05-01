@@ -9,6 +9,11 @@
 		<%= f.text_area :body, class: "col-xs-12 book_body" %>
 	</div>
 
+	<div class="field row">
+		<%= f.label :youtube_url %> <!-- ここを変更 -->
+		<%= f.text_area :youtube_url, class: "col-xs-12 book_youtube_url" %>
+	</div>
+
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
